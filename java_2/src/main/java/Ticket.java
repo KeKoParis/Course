@@ -4,47 +4,34 @@ import java.util.Date;
 public class Ticket {
     private char[] id = {};
     private char[] concertHall = {};
-    private int eventCode = -1;
-    private long time = 0;
-    private boolean isPromo = false;
-    private char stadiumSector = ' ';
-    private double maxBackpackWeight = -1;
-    private long ticketCreationTime = 0;
-    private double tickerPrice = 0;
+    private int eventCode;
+    private long time;
+    private boolean isPromo;
+    private char stadiumSector;
+    private double maxBackpackWeight;
+    private long ticketCreationTime;
+    private double tickerPrice;
 
     public Ticket() {
     }
 
     public Ticket(char[] idInput, char[] concertHallInput, int eventCodeInput, Date timeInput,
                   boolean isPromoInput, char stadiumSectorInput, double maxBackpackWeightInput) {
-        if (idInput.length <= 4) {
-            this.id = idInput;
-        }
-        if (concertHallInput.length <= 10) {
-            this.concertHall = concertHallInput;
-        }
-        if (0 <= eventCodeInput && eventCodeInput < 1000) {
-            this.eventCode = eventCodeInput;
-        }
+        this.id = idInput;
+
+        this.concertHall = concertHallInput;
+        this.eventCode = eventCodeInput;
         this.time = timeInput.getTime();
         this.isPromo = isPromoInput;
-        if (stadiumSectorInput == 'A' | stadiumSectorInput == 'B' | stadiumSectorInput == 'C') {
-            this.stadiumSector = stadiumSectorInput;
-        }
-        if (maxBackpackWeightInput >= 0) {
-            this.maxBackpackWeight = maxBackpackWeightInput;
-        }
+        this.stadiumSector = stadiumSectorInput;
+        this.maxBackpackWeight = maxBackpackWeightInput;
         this.ticketCreationTime = new Date().getTime();
     }
 
     public Ticket(char[] concertHallInput, Date timeInput, int eventCodeInput) {
 
-        if (concertHallInput.length <= 10) {
-            this.concertHall = concertHallInput;
-        }
-        if (0 <= eventCodeInput && eventCodeInput < 1000) {
-            this.eventCode = eventCodeInput;
-        }
+        this.concertHall = concertHallInput;
+        this.eventCode = eventCodeInput;
         this.time = timeInput.getTime();
         this.ticketCreationTime = new Date().getTime();
 
@@ -52,7 +39,7 @@ public class Ticket {
 
     public void printTicket() {
         System.out.println("_______________________________________");
-        if (this.eventCode == -1) {
+        if (this.eventCode == 0) {
             System.out.println("Empty ticket");
             return;
         }
@@ -68,9 +55,7 @@ public class Ticket {
     }
 
     public void addTicketPrice(double priceInput) {
-        if (priceInput >= 0) {
-            this.tickerPrice = priceInput;
-        }
+        this.tickerPrice = priceInput;
     }
 
     public double getTicketPrice() {

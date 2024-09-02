@@ -2,7 +2,7 @@ import javax.sound.midi.Soundbank;
 import java.util.Date;
 
 public class Ticket {
-    private char[] id = {};
+    public char[] id = {};
     private char[] concertHall = {};
     private int eventCode;
     private long time;

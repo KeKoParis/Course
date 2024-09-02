@@ -5,8 +5,9 @@ import java.util.*;
 
 public class TicketService {
 
+    private static Ticket[] tickets = new Ticket[10];
+
     public static void main(String[] args) throws ParseException, IOException {
-        char[] id = {'4', 'a', 'c', 'r'};
 
         System.out.println("Enter hall name length (less than 10):");
         Scanner in = new Scanner(System.in);
@@ -51,16 +52,18 @@ public class TicketService {
         System.out.print("Enter max backpack weight: ");
         double maxBackpackWeight = in.nextInt();
 
-        Ticket emptyTicket = new Ticket();
-        Ticket limitedTicket = new Ticket(hall, time, eventCode);
-        Ticket ticket = new Ticket(id, hall, eventCode, time, isPromo, stadiumSector.charAt(0), maxBackpackWeight);
 
+        for (int i = 0; i < 10; i++) {
+            char currId = (char) (i + 41);
+            char[] id = new char[]{currId};
+            Ticket ticket = new Ticket(id, hall, eventCode, time, isPromo, stadiumSector.charAt(0), maxBackpackWeight);
+            tickets[i] = ticket;
+        }
 
-        emptyTicket.printTicket();
-        limitedTicket.printTicket();
-        ticket.printTicket();
+        char[]newTicketId = new char[]{'A'};
+        
 
-        ticket.addTicketPrice(15.3);
-        System.out.printf("Ticket price: %.2f\n", ticket.getTicketPrice());
     }
+
+
 }

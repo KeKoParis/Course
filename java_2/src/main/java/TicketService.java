@@ -60,10 +60,19 @@ public class TicketService {
             tickets[i] = ticket;
         }
 
-        char[]newTicketId = new char[]{'A'};
-        
+        char[] newTicketId = new char[]{'A'};
+        Ticket newTicket = getTicket(newTicketId);
+
+        newTicket.printTicket();
 
     }
 
-
+    public static Ticket getTicket(char[] currentId) {
+        for (int i = 0; i < 10; i++) {
+            if (tickets[i].id == currentId) {
+                return tickets[i];
+            }
+        }
+        return new Ticket();
+    }
 }
